@@ -23,7 +23,7 @@ const TOKEN = String(process.env.TOKEN);
 const API_KEY = String(process.env.API_KEY);
 const CHANNEL_ID = Number(process.env.CHANNEL_ID) || 1214585391;
 const DB_URL = String(process.env.DB_URL);
-const SEARCH_URL = "https://wallhaven.cc/api/v1/search?q=id:1&categories=010&purity=100&sorting=date_added";
+const SEARCH_URL = "https://wallhaven.cc/api/v1/search?q=id:1&categories=010&purity=110&sorting=date_added";
 const bot = new telegraf_1.Telegraf(TOKEN);
 mongoose_1.default.connect(DB_URL)
     .catch(e => console.log(e));
