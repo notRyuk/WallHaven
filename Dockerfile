@@ -4,6 +4,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 COPY tsconfig.json ./
 RUN npm install
-RUN tsc
+RUN npm install -g typescript
+RUN npm tsc
 COPY . .
 CMD [ "node", "bot.js" ]
