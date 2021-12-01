@@ -44,17 +44,15 @@ class WallPaper {
         this.resolution = '';
         this.size = 0;
         this.path = '';
-        this.thumb = '';
         this.id = data.id;
         this.resolution = data.resolution;
         this.size = data.size;
         this.path = data.path;
-        this.thumb = data.thumb;
     }
     send() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                yield bot.telegram.sendPhoto(CHANNEL_ID, this.thumb, {
+                yield bot.telegram.sendPhoto(CHANNEL_ID, this.path, {
                     caption: `Anime (<code>${this.resolution}</code>)\n@Not_Anime_Wallpapers`,
                     parse_mode: "HTML",
                 });
@@ -98,8 +96,7 @@ const auto_post = () => __awaiter(void 0, void 0, void 0, function* () {
                         id: _x.id,
                         resolution: _x.resolution,
                         size: _x.file_size,
-                        path: _x.path,
-                        thumb: _x.thumbs.original
+                        path: _x.path
                     }));
                 }
             }
@@ -112,8 +109,7 @@ const auto_post = () => __awaiter(void 0, void 0, void 0, function* () {
                             id: wall.id,
                             resolution: wall.resolution,
                             size: wall.file_size,
-                            path: wall.path,
-                            thumb: wall.thumbs.original
+                            path: wall.path
                         }));
                     }
                     if (wall.id === latestPostId) {
