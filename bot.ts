@@ -32,7 +32,6 @@ type WallpaperType = {
     resolution: string;
     size: number;
     path: string;
-    thumb: string;
     send(): Promise<void>;
 }
 
@@ -47,18 +46,16 @@ class WallPaper implements WallpaperType {
     public resolution = ''
     public size = 0
     public path = ''
-    public thumb = ''
     constructor(data: WallpaperType) {
         this.id = data.id
         this.resolution = data.resolution
         this.size = data.size
         this.path = data.path
-        this.thumb = data.thumb
     }
 
     async send() {
         try {
-            await bot.telegram.sendPhoto(CHANNEL_ID, this.thumb, {
+            await bot.telegram.sendPhoto(CHANNEL_ID, this.path, {
                 caption: `Anime (<code>${this.resolution}</code>)\n@Not_Anime_Wallpapers`,
                 parse_mode: "HTML",
             })
@@ -102,8 +99,7 @@ const auto_post = async () => {
                         id: _x.id,
                         resolution: _x.resolution,
                         size: _x.file_size,
-                        path: _x.path,
-                        thumb: _x.thumbs.original
+                        path: _x.path
                     } as WallpaperType));
                 }
             }
@@ -117,8 +113,7 @@ const auto_post = async () => {
                                 id: wall.id,
                                 resolution: wall.resolution,
                                 size: wall.file_size,
-                                path: wall.path,
-                                thumb: wall.thumbs.original
+                                path: wall.path
                             } as WallpaperType)
                         )
                     }
