@@ -12,7 +12,7 @@ const TOKEN = String(process.env.TOKEN)
 const API_KEY = String(process.env.API_KEY)
 const CHANNEL_ID = Number(process.env.CHANNEL_ID) || 1214585391
 const DB_URL = String(process.env.DB_URL)
-const SEARCH_URL = "https://wallhaven.cc/api/v1/search?q=id:1&categories=010&purity=100&sorting=date_added"
+const SEARCH_URL = "https://wallhaven.cc/api/v1/search?q=id:1&categories=010&purity=010&sorting=date_added"
 const bot = new Telegraf(TOKEN)
 
 mongoose.connect(DB_URL)
@@ -59,11 +59,11 @@ class WallPaper implements WallpaperType {
     async send() {
         try {
             await bot.telegram.sendPhoto(CHANNEL_ID, this.thumb, {
-                caption: `Anime (<code>${this.resolution}</code>)\n@Not_Anime_Wallpapers`,
+                caption: `Ecchi (<code>${this.resolution}</code>)\n@PatheticPerverts`,
                 parse_mode: "HTML",
             })
             await bot.telegram.sendDocument(CHANNEL_ID, this.path, {
-                caption: `Anime (<code>${this.resolution}</code>)\n@Not_Anime_Wallpapers`,
+                caption: `Ecchi (<code>${this.resolution}</code>)\n@PatheticPerverts`,
                 parse_mode: "HTML",
                 reply_markup: {
                     inline_keyboard: [[
